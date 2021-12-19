@@ -8,7 +8,7 @@ export default function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Movies />} />
-
+                    <Route path='/sessoes/:movieId' element={<></>} />
                 </Routes>
             </BrowserRouter>
         </>

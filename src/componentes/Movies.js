@@ -1,23 +1,23 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useState ,useEffect } from "react";
+import { getMovie } from "../service/api";
+import Movie from "./Movie";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
-
+    console.log(movies)
     useEffect(() => {
-
+        getMovie()
+        .then(response => setMovies(response.data));
     }, []);
 
     return(
         <>
             <Title> Selecione o Filme </Title>
             <MoviesList>
-                <Link to={``}>
-                    <Movie>
-                        <img scr='' alt=''/>
-                    </Movie>
-                </Link>
+                {
+                    movies.map( (movie) => <Movie key={movie.id} movie={movie} />)
+                }
             </MoviesList>
         </>
     );
@@ -48,18 +48,4 @@ const MoviesList = styled.div`
     justify-content: space-evenly;
     flex-wrap: wrap;
     cursor: pointer;
-`
-const Movie = styled.div`
-    display: flex;
-    background-color: #fff;
-    padding: 8px;
-    border-radius: 3px;
-    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
-    margin-bottom: 11px;
-
-    img {
-        width: 129px;
-        height: 193px;
-        object-fit: cover;
-    }
 `
