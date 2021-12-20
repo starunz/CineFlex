@@ -24,7 +24,7 @@ const Top = styled.div`
   align-items: center;
 
   font-size: 34px;
-  font-family: 'Roboto' sans-serif;
+  font-family: 'Roboto', sans-serif;
 
   text-transform: uppercase;
 `

@@ -3,19 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Success({order,setOrder}) {
     const navigate = useNavigate();
-    console.log(order, setOrder);
-
-    const {
-      cpf,
-      name,
-      selectedSeats,
-      showtime,
-    } = order;
-  
-  
-    if (!order) {
-      navigate('/')
-    }
   
     function returnToHome () {
       setOrder(null);
@@ -28,25 +15,25 @@ export default function Success({order,setOrder}) {
           Pedido feito<br />com sucesso!
         </Title>
   
-        <div className="info-group">
+        <InfoGroup>
           <InfoTitle>Filme e sessão</InfoTitle>
-          <div>{showtime.movie.title}</div>
-          <div>{showtime.day.date} - {showtime.name}</div>
-        </div>
+          <span>{order.showtime.movie.title}</span>
+          <span>{order.showtime.day.date} - {order.showtime.name}</span>
+        </InfoGroup>
   
         <InfoGroup>
           <InfoTitle>Ingressos</InfoTitle>
           {
-            selectedSeats.map(s => (
-              <div>Assento {s.name}</div>
+            order.selectedSeats.map(seat => (
+              <span>Assento {seat.name}</span>
             ))
           }
         </InfoGroup>
   
         <InfoGroup>
           <InfoTitle>Comprador</InfoTitle>
-          <div>{name}</div>
-          <div>CPF: {cpf}</div>
+          <span>Nome: {order.name}</span>
+          <span>CPF: {order.cpf}</span>
         </InfoGroup>
   
         <BackHome onClick={returnToHome}>
@@ -56,8 +43,8 @@ export default function Success({order,setOrder}) {
     );
 }
 const PageReview = styled.div`
-  margin-bottom: 117px;
-  padding-bottom: 24px;
+    margin-bottom: 117px;
+    padding-bottom: 24px;
 `
 const Title = styled.div`
     width: 100%;
@@ -69,7 +56,7 @@ const Title = styled.div`
 
     font-family: 'Roboto', sans-serif;
     font-style: normal;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 24px;
     line-height: 28px;
     display: flex;
@@ -77,36 +64,62 @@ const Title = styled.div`
     text-align: center;
     letter-spacing: 0.04em;
 
-    color: #293845;
-
+    color: #247A6B;
+ 
     margin-top: 67px;
 `
 const InfoGroup = styled.div`
-  padding: 0 30px;
-  display: flex;
-  flex-direction: column;
-  font-size: 22px;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
 
-  :not(:last-child) {
-    margin-bottom: 47px;
-  }
+    :not(:last-child) {
+        margin-bottom: 47px;
+    }
+    
+    span {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0.04em;
+    }
+    
+    color: #293845;
 `
 const InfoTitle = styled.div`
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 18px;
-  margin-bottom: 10px;
+    margin-bottom: 18px;
+    margin-bottom: 10px;
+
+    font-family: 'Roboto' sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0.04em;
+
+    color: #293845;
 `
 const BackHome = styled.button`
-  width: 225px;
-  height: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  background-color: #E8833A;
-  font-size: 18px;
-  border: none;
-  border-radius: 3px;
-  margin: 0 auto;
+    width: 225px;
+    height: 42px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+    background-color: #E8833A;
+
+    border: none;
+    border-radius: 3px;
+    margin: 0 auto;
+
+    font-family: 'Roboto' sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.04em;
 `
