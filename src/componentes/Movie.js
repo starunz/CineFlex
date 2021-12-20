@@ -5,24 +5,24 @@ export default function Movie({movie}) {
     return(
         <Link to={`/sessoes/${movie.id}`}>
             <Movies>
-                <img src={movie.posterURL} alt='ue'/>
+                <img src={movie.posterURL} alt='movie'/>
             </Movies>
         </Link>
     );
 }
 
 const Movies = styled.div`
-    display: flex;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+
+    margin-bottom: 11px;
     padding: 8px;
     border-radius: 3px;
-    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
-    margin-bottom: 11px;
 
     img {
         width: 129px;
         height: 193px;
         object-fit: cover;
-        z-index: 1;
+        cursor: pointer;
     }
 `

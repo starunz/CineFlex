@@ -5,10 +5,10 @@ import Movie from "./Movie";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
-    console.log(movies)
+
     useEffect(() => {
         getMovie()
-        .then(response => setMovies(response.data));
+        .then((response) => setMovies(response.data));
     }, []);
 
     return(
@@ -42,10 +42,11 @@ const Title = styled.div`
     letter-spacing: 0.04em;
 
     color: #293845;
+
+    margin-top: 67px;
 `
 const MoviesList = styled.div`
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    cursor: pointer;
 `
