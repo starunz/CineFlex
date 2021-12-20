@@ -11,4 +11,9 @@ const getShowtimes = (movieId) => {
     const promise = axios.get(`${url}/movies/${movieId}/showtimes`)
     return promise;
 }
-export { getMovie, getShowtimes }
+
+const getSeats = (showtimeId) => {
+    const promise = axios.get(`${url}/showtimes/${showtimeId}/seats`)
+    return promise;
+}
+export { getMovie, getShowtimes, getSeats }
